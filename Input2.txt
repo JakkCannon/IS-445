@@ -1,0 +1,14 @@
+3~Ernie~Ellis~CA~3500~4000
+4~Hubert~Hughes~CA~4500~2000
+13~Joyce~Jones~AZ~2500~2500
+14~Greg~Goodwin~CA~2100~1900
+15~Lousie~Lewis~AZ~700~900
+16~Logan~Landing~NV~980~1100
+17~Sammie~Sherlock~CA~2400~1000
+18~David~Dunns~AZ~650~500
+19~Robert~Rodrigo~CA~400~300
+20~Bobby~Bills~AZ~1200~800
+21~Bob~Burten~CA~700~300
+22~Lynn~Lester~CA~0~1100
+23~Terrance~Topps~CA~5000~6000
+9~Shelly~Smith~NV~2500~0

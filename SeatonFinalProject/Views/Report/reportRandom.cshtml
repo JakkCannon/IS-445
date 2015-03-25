@@ -1,0 +1,79 @@
+﻿@model IEnumerable<SeatonFinalProject.Models.Customer>
+
+@{
+    ViewBag.Title = "Report";
+}
+
+@RenderPage("~/Views/Shared/_reportHeader.cshtml")
+
+@if (ViewBag.reportStatus != null)
+{
+    <h2>Report Result: @ViewBag.reportStatus</h2>
+}
+
+@if (Model != null)
+{
+    Random rnd = new Random();
+
+    int rndNumber1 = 1;
+    int rndNumber2 = 1;
+    int rndNumber3 = 1;
+
+    do
+    {
+        rndNumber1 = rnd.Next(1, Model.Count());
+        rndNumber2 = rnd.Next(1, Model.Count());
+        rndNumber3 = rnd.Next(1, Model.Count());
+    }
+    while (rndNumber1 == rndNumber2 && rndNumber1 == rndNumber3 && rndNumber2 == rndNumber3); 
+    
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>State</th>
+            <th>Sales Year to Date</th>
+            <th>Previous Sales</th>
+        </tr>
+        @{
+    foreach (var item in Model)
+    {
+        if (@item.Id == rndNumber1)
+        { 
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.CustFirstName</td>
+            <td>@item.CustLastName</td>
+            <td>@item.CustState</td>
+            <td>@item.CustSalesYTD</td>
+            <td>@item.CustSalesPrevious</td>
+        </tr>
+        }
+        else if (@item.Id == rndNumber2)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CustFirstName</td>
+                <td>@item.CustLastName</td>
+                <td>@item.CustState</td>
+                <td>@item.CustSalesYTD</td>
+                <td>@item.CustSalesPrevious</td>
+            </tr>
+        }
+        else if (@item.Id == rndNumber3)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CustFirstName</td>
+                <td>@item.CustLastName</td>
+                <td>@item.CustState</td>
+                <td>@item.CustSalesYTD</td>
+                <td>@item.CustSalesPrevious</td>
+            </tr>
+        }
+    }
+}
+
+    </table>
+}

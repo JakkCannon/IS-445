@@ -1,0 +1,26 @@
+﻿@model SeatonFinalProject.Models.Customer
+
+@{
+    ViewBag.Title = "Import Customer List";
+}
+
+<h2>Import</h2>
+<p>Total Number of Records in the Database: @ViewBag.totRecords</p>
+@if (@ViewBag.recordsInserted != null)
+{
+    <p>Inserted Records: @ViewBag.recordsInserted</p>
+    <p>Not Inserted Records: @ViewBag.recordsNotInserted</p>
+}
+@using (Html.BeginForm())
+{
+    <p>
+        <div class="col-md-2"><b>Enter File Name: </b></div>
+        <div class="col-md-10">@Html.TextBox("fileName", "", new { @class = "form-control" })</div> <br /><br />
+        <input type="submit" value="Import Data" class="btn btn-default" />
+</p>
+}
+
+@if (ViewBag.importStatus != null)
+{
+    <h3>@ViewBag.importStatus</h3>
+}

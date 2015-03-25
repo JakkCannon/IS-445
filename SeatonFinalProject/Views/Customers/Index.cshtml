@@ -1,0 +1,163 @@
+﻿<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $("#searchResults").hide();
+
+        var results = @ViewBag.searchResults;
+        if (results > 0){
+            $("#searchResults").show();
+        }
+    });
+</script>
+
+@model IEnumerable<SeatonFinalProject.Models.Customer>
+
+@{
+    ViewBag.Title = "Find Customers";
+}
+
+<h2>Find Customers</h2>
+
+Total Number of Records in the Database: @ViewBag.totRecords
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group">
+            <div class="control-label col-md-2">@Html.Label("ID", htmlAttributes: new { @class = "control-label" })</div>
+            <div class="col-md-3">
+                @Html.TextBox("idString", "", new { @class = "form-control" })
+            </div>
+            <div id="col-md-2">
+                <i>(equals)</i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">@Html.Label("First Name", htmlAttributes: new { @class = "control-label" })</div>
+            <div class="col-md-3">
+                @Html.TextBox("firstName", "", new { @class = "form-control" })
+            </div>
+            <div id="col-md-2">
+                <i>(begins with)</i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">@Html.Label("Last Name", htmlAttributes: new { @class = "control-label" })</div>
+            <div class="col-md-3">
+                @Html.TextBox("lastName", "", new { @class = "form-control" })
+            </div>
+            <div id="col-md-2">
+                <i>(begins with)</i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">@Html.Label("State", htmlAttributes: new { @class = "control-label" })</div>
+            <div class="col-md-3">
+                @Html.TextBox("state", "", new { @class = "form-control" })
+            </div>
+            <div id="col-md-2">
+                <i>(equals)</i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">@Html.Label("Sales YTD", htmlAttributes: new { @class = "control-label" })</div>
+            <div class="col-md-3">
+                @Html.TextBox("salesYTD", "", new { @class = "form-control" })
+            </div>
+            <div id="col-md-2">
+                <i>(greater than or equal to)</i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="control-label col-md-2">@Html.Label("Previous Years Sales", htmlAttributes: new { @class = "control-label" })</div>
+            <div class="col-md-3">
+                @Html.TextBox("pvSales", "", new { @class = "form-control" })
+            </div>
+            <div id="col-md-2">
+                <i>(greater than or equal to)</i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input id="find" type="submit" value="Find" class="btn btn-default" />
+            </div>
+        </div>
+
+</div>
+<br />
+
+}
+
+<h3>@Html.ActionLink("Create New Customer Contact", "Create")</h3>
+
+
+<h2>@(ViewBag.searchResults == 0 ? "No results match search criteria!" : "")</h2>
+
+@if (ViewBag.searchResults > 0)
+{ 
+<table hidden class="table" id="searchResults">
+    <tr>
+        <th>
+            <b>ID</b>
+                    </th>
+                    <th>
+                        <b>First Name</b>
+                    </th>
+                    <th>
+                        <b>Last Name</b>
+                    </th>
+                    <th>
+                        <b>State</b>
+                    </th>
+                    <th>
+                        <b>Sales YTD</b>
+                    </th>
+                    <th>
+                        <b>Previous Years Sales</b>
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustFirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustLastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustState)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustSalesYTD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CustSalesPrevious)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+    }
+
+            </table>
+}
+            

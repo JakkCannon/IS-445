@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SeatonFinalProject.Models.Customer>
+@using SeatonFinalProject.Models;
+
+@{
+    ViewBag.Title = "Report";
+}
+
+@RenderPage("~/Views/Shared/_reportHeader.cshtml")
+
+@if (ViewBag.reportStatus != null)
+{
+    <h2>Report Result: @ViewBag.reportStatus</h2>
+}
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>State</th>
+        <th>Sales Year to Date</th>
+        <th>Previous Sales</th>
+    </tr>
+
+
+    @{
+    int totSalesYTD = Model.Sum(i => i.CustSalesYTD);
+    int totPreviousSales = Model.Sum(i => i.CustSalesYTD);
+
+    decimal totSales = totSalesYTD + totPreviousSales;
+
+    decimal totStateSales = 0;
+    
+    string prevState = (string)Model.First<Customer>().CustState;
+
+    foreach (var item in Model)
+    {
+        if ((string)item.CustState != prevState)
+        {
+            
+            <tr>
+                <th colspan="6"><h3>Total sales in @prevState: $@totStateSales</h3></th>
+            </tr>
+
+            prevState = (string)item.CustState;
+            totStateSales = 0;
+        }
+        
+        totStateSales = totStateSales + (@item.CustSalesYTD + @item.CustSalesPrevious);
+        
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.CustFirstName</td>
+            <td>@item.CustLastName</td>
+            <td>@item.CustState</td>
+            <td>@item.CustSalesYTD</td>
+            <td>@item.CustSalesPrevious</td>
+        </tr>
+    }
+    <tr>
+        <th colspan="6"><h3>Total sales in @prevState: $@totStateSales</h3></th>
+    </tr>
+        
+    }
+</table>
+<hr />
+<h2>Total number of sales is: $@totSales</h2>

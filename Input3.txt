@@ -1,0 +1,9 @@
+24~Susie~Strutts~NV~1400~50
+25~Mark~Maine~NV~100~200
+26~Danielle~Douglas~CA~2200~100
+27~Danny~Dirk~AZ~0~0
+28~Adam~Abernathy~AZ~1700~0
+29~Eugene~Ernest~CA~1900~800
+30~Ernie~Eon~CA~3500~4000
+7~Patricia~Pullman~AZ~1000~1100
+16~Logan~Landing~NV~980~1100

@@ -1,0 +1,12 @@
+1~Alfred~Alexander~NV~1500~900
+2~Cynthia~Chase~CA~900~1200
+3~Ernie~Ellis~CA~3500~4000
+4~Hubert~Hughes~CA~4500~2000
+5~Kathryn~King~NV~850~500
+6~Nicholas~Niles~NV~500~400
+7~Patricia~Pullman~AZ~1000~1100
+8~Sally~Smith~NV~1000~1100
+9~Shelly~Smith~NV~2500~0
+10~Terrance~Thomson~CA~5000~6000
+11~Valarie~Vega~AZ~0~3000
+12~Xavier~Xerox~AZ~600~250
